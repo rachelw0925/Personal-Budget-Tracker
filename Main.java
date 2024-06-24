@@ -7,30 +7,29 @@ public class Main {
 			// Print user interface
 			System.out.println("==================================");
             System.out.println("Personal Budget Tracker");
-            System.out.println("===================================");
+            System.out.println("==================================");
 			System.out.println("1. Add Income");
 			System.out.println("2. Edit Income");
 			System.out.println("3. Delete Income");
 			System.out.println("4. Add Expense");
 			System.out.println("5. Edit Expense");
 			System.out.println("6. Delete Expense");
-			System.out.println("7. Generate Monthly Report");
-			System.out.println("8. Generate Yearly Report ");
-			System.out.println("9. Exit");
-            System.out.println("===================================");
-            System.out.println("Please select an option (1-9)");
+			System.out.println("7. Generate Report");
+			System.out.println("8. Exit");
+            System.out.println("==================================");
+            System.out.println("Please select an option (1-8)");
             
             // Look for user input
             int opt = scan.nextInt();
             
             // Check for valid input
-            if (opt < 1 || opt > 9) {
+            if (opt < 1 || opt > 8) {
                 System.out.println("Invalid option. Please select a valid option (1-9).");
                 continue;
             }
             
             // Exit condition
-            if (opt == 9) {
+            if (opt == 8) {
                 System.out.println("Exiting the application.");
                 break;
             }
@@ -39,15 +38,21 @@ public class Main {
             switch (opt) {
                 case 1:
                     System.out.println("Add Income selected.");
-                    // Handle adding income
+                    Income.addIncome();
                     break;
                 case 2:
                     System.out.println("Edit Income selected.");
-                    // Handle editing income
+                    Income.displayIncomes();
+                    System.out.print("Enter the ID of the income entry to edit: ");
+                    int incomeId = scan.nextInt();
+                    Income.editIncome(incomeId);
                     break;
                 case 3:
                     System.out.println("Delete Income selected.");
-                    // Handle deleting income
+                    Income.displayIncomes();
+                    System.out.print("Enter the ID of the income entry to delete: ");
+                    int incomeId1 = scan.nextInt();
+                    Income.deleteIncome(incomeId1);
                     break;
                 case 4:
                     System.out.println("Add Expense selected.");
@@ -62,12 +67,8 @@ public class Main {
                     // Handle deleting expense
                     break;
                 case 7:
-                    System.out.println("Generate Monthly Report selected.");
-                    // Handle generating monthly report
-                    break;
-                case 8:
-                    System.out.println("Generate Yearly Report selected.");
-                    // Handle generating yearly report
+                    System.out.println("Generate Report selected.");
+                    // Handle generating  report
                     break;
             }
 		}
